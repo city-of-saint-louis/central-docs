@@ -1,0 +1,8 @@
+site_name: Central Docs
+repo_url: https://github.com/city-of-saint-louis/central-docs
+theme: 
+  name: material
+nav:
+  - Home: index.md
+  - Branching: branching.md
+  - Workflow: workflow.md
