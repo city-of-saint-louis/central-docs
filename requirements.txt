@@ -104,7 +104,7 @@ typing_extensions==4.12.2
 tzdata==2024.2
 tzlocal==5.2
 ujson==5.10.0
-urllib3==2.3.0
+urllib3==2.5.0
 uvicorn==0.34.0
 watchdog==6.0.0
 websockets==13.1
