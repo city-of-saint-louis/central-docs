@@ -8,12 +8,5 @@ These guidelines are intended to facilitate, rather than restrict, the collabora
 and we encourage all involved to discuss, contribute, and improve this documentation.
 
 
-## Planned Sections
-    branching
-        standard prefixes
-        branch names
-    workflow
-        implement
-        review
-        integrate
+
         
