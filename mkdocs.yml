@@ -15,5 +15,7 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Branching: branching.md
-  - Workflow: workflow.md
+  - Workflow: 
+    - Workflow: workflow.md
+    - Pull Request: pull-request.md
 use_directory_urls: false
