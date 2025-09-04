@@ -15,7 +15,7 @@ The developer uploads changes to a feature branch in the remote repository
 ___
 ### Review
 #### Create Pull Request 
-The developer creates a new pull request 
+The developer creates a new [pull request](pull-request.md)
 #### Request Review
 The developer requests a code review from one or more designated reviewers
 #### Conduct Review 
