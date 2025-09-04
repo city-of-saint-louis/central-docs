@@ -17,7 +17,7 @@ ___
 #### Create Pull Request 
 The developer creates a new [pull request](pull-request.md)
 #### Request Review
-The developer requests a code review from one or more designated reviewers
+The developer requests a [code review](code-review.md) from one or more designated reviewers
 #### Conduct Review 
 The reviewer reviews changes made to the code and either approves them or requests additional changes
 
