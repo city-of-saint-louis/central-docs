@@ -16,3 +16,4 @@ nav:
   - Home: index.md
   - Branching: branching.md
   - Workflow: workflow.md
+use_directory_urls: false
