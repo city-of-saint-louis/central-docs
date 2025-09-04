@@ -18,4 +18,5 @@ nav:
   - Workflow: 
     - Workflow: workflow.md
     - Pull Request: pull-request.md
+    - Code Review: code-review.md
 use_directory_urls: false
