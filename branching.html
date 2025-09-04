@@ -8,23 +8,25 @@
       
       
       
-        <link rel="canonical" href="https://city-of-saint-louis.github.io/central-docs/workflow/">
+        <link rel="canonical" href="https://city-of-saint-louis.github.io/central-docs/branching.html">
       
       
-        <link rel="prev" href="../branching/">
+        <link rel="prev" href="index.html">
       
       
+        <link rel="next" href="workflow.html">
       
-      <link rel="icon" href="../assets/bookshelf.svg">
+      
+      <link rel="icon" href="assets/bookshelf.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
     
     
       
-        <title>Workflow - Central Docs</title>
+        <title>Branching - Central Docs</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.7e37652d.min.css">
       
       
 
@@ -43,7 +45,7 @@
       
     
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -62,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#workflow" class="md-skip">
+        <a href="#branching" class="md-skip">
           Skip to content
         </a>
       
@@ -78,7 +80,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Central Docs" class="md-header__button md-logo" aria-label="Central Docs" data-md-component="logo">
+    <a href="index.html" title="Central Docs" class="md-header__button md-logo" aria-label="Central Docs" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"/></svg>
@@ -98,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Workflow
+              Branching
             
           </span>
         </div>
@@ -188,7 +190,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Central Docs" class="md-nav__button md-logo" aria-label="Central Docs" data-md-component="logo">
+    <a href="index.html" title="Central Docs" class="md-nav__button md-logo" aria-label="Central Docs" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"/></svg>
@@ -218,34 +220,12 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="index.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     Home
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../branching/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Branching
     
   </span>
   
@@ -276,7 +256,7 @@
   
   
   <span class="md-ellipsis">
-    Workflow
+    Branching
     
   </span>
   
@@ -284,12 +264,12 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="./" class="md-nav__link md-nav__link--active">
+      <a href="branching.html" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
-    Workflow
+    Branching
     
   </span>
   
@@ -312,137 +292,38 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#branch-name-components" class="md-nav__link">
     <span class="md-ellipsis">
-      Overview
+      Branch Name Components
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#implementation" class="md-nav__link">
+  <a href="#standard-prefixes" class="md-nav__link">
     <span class="md-ellipsis">
-      Implementation
+      Standard Prefixes
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Implementation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#code" class="md-nav__link">
-    <span class="md-ellipsis">
-      Code
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#test" class="md-nav__link">
-    <span class="md-ellipsis">
-      Test
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#push" class="md-nav__link">
-    <span class="md-ellipsis">
-      Push
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#review" class="md-nav__link">
+  <a href="#descriptive-name" class="md-nav__link">
     <span class="md-ellipsis">
-      Review
+      Descriptive Name
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Review">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#create-pull-request" class="md-nav__link">
-    <span class="md-ellipsis">
-      Create Pull Request
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#request-review" class="md-nav__link">
-    <span class="md-ellipsis">
-      Request Review
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#conduct-review" class="md-nav__link">
-    <span class="md-ellipsis">
-      Conduct Review
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#integration" class="md-nav__link">
+  <a href="#examples" class="md-nav__link">
     <span class="md-ellipsis">
-      Integration
+      Examples
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Integration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#merge" class="md-nav__link">
-    <span class="md-ellipsis">
-      Merge
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#resolve-conflicts" class="md-nav__link">
-    <span class="md-ellipsis">
-      Resolve Conflicts
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#deploy" class="md-nav__link">
-    <span class="md-ellipsis">
-      Deploy
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -450,6 +331,28 @@
   
 </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="workflow.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Workflow
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -481,137 +384,38 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#branch-name-components" class="md-nav__link">
     <span class="md-ellipsis">
-      Overview
+      Branch Name Components
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#implementation" class="md-nav__link">
+  <a href="#standard-prefixes" class="md-nav__link">
     <span class="md-ellipsis">
-      Implementation
+      Standard Prefixes
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Implementation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#code" class="md-nav__link">
-    <span class="md-ellipsis">
-      Code
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#test" class="md-nav__link">
-    <span class="md-ellipsis">
-      Test
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#push" class="md-nav__link">
-    <span class="md-ellipsis">
-      Push
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#review" class="md-nav__link">
+  <a href="#descriptive-name" class="md-nav__link">
     <span class="md-ellipsis">
-      Review
+      Descriptive Name
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Review">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#create-pull-request" class="md-nav__link">
-    <span class="md-ellipsis">
-      Create Pull Request
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#request-review" class="md-nav__link">
-    <span class="md-ellipsis">
-      Request Review
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#conduct-review" class="md-nav__link">
-    <span class="md-ellipsis">
-      Conduct Review
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#integration" class="md-nav__link">
+  <a href="#examples" class="md-nav__link">
     <span class="md-ellipsis">
-      Integration
+      Examples
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Integration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#merge" class="md-nav__link">
-    <span class="md-ellipsis">
-      Merge
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#resolve-conflicts" class="md-nav__link">
-    <span class="md-ellipsis">
-      Resolve Conflicts
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#deploy" class="md-nav__link">
-    <span class="md-ellipsis">
-      Deploy
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -634,45 +438,84 @@
   
 
 
-<h1 id="workflow">Workflow</h1>
-<h3 id="overview">Overview</h3>
-<p>Our workflow is an essential part of our functional collaborative environment, and can be broadly categorized into three stages: <a href="#implementation">Implementation</a>, <a href="#review">Review</a>, and <a href="#integration">Integration</a>. </p>
-<p>Each workflow stage consists of one or more activities that must be completed before moving to the next stage of the workflow.  </p>
-<hr />
-<h3 id="implementation">Implementation</h3>
-<h4 id="code">Code</h4>
-<p>The developer makes code changes in their local development environment</p>
-<h4 id="test">Test</h4>
-<p>The developer tests code changes in their local development environment</p>
-<h4 id="push">Push</h4>
-<p>The developer uploads changes to a feature branch in the remote repository</p>
-<hr />
-<h3 id="review">Review</h3>
-<h4 id="create-pull-request">Create Pull Request</h4>
-<p>The developer creates a new pull request </p>
-<h4 id="request-review">Request Review</h4>
-<p>The developer requests a code review from one or more designated reviewers</p>
-<h4 id="conduct-review">Conduct Review</h4>
-<p>The reviewer reviews changes made to the code and either approves them or requests additional changes</p>
-<hr />
-<h3 id="integration">Integration</h3>
-<h4 id="merge">Merge</h4>
-<p>The developer merges the code into the main branch</p>
-<h4 id="resolve-conflicts">Resolve Conflicts</h4>
-<p>The developer resolves any conflicts that arise during the merge operation</p>
-<h4 id="deploy">Deploy</h4>
-<p>Changes are deployed to the target environment</p>
-<hr />
-<div class="admonition info">
-<p class="admonition-title">Iterative Process</p>
-<p>Most workflow stages and activities are iterative. A common example of this iteration is as follows:</p>
+<h1 id="branching">Branching</h1>
+<p>Branching is an integral part of our workflow; it facilitates multiple independent lines of development
+and reduces the risk of conflicts in a collaborative working environment. By packaging changes into 
+focused feature branches, we ensure that the main branch is kept clean and stable and that all changes
+are isolated and easy to review and test. </p>
+<h2 id="branch-name-components">Branch Name Components</h2>
+<p>A branch name consist of two components: A standard prefix and a descriptive name. The prefix should
+be separated from the branch name by a single <code>/</code> character:<br />
+<code>prefix/descriptive-branch-name</code></p>
+<h2 id="standard-prefixes">Standard Prefixes</h2>
+<p>Prefixes help to quickly identify the purpose of a branch, and all branch names should begin with one of
+the following standard prefixes:</p>
+<table>
+<thead>
+<tr>
+<th>Prefix</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>feature</td>
+<td>add new functionality</td>
+<td>feature/add-backend-logging</td>
+</tr>
+<tr>
+<td>bugfix</td>
+<td>address a bug or issue</td>
+<td>fix/handle-database-error</td>
+</tr>
+<tr>
+<td>hotfix</td>
+<td>address a bug or issue (direct push to main)</td>
+<td>hotfix/controller-infinite-loop</td>
+</tr>
+<tr>
+<td>refactor</td>
+<td>modify or improve existing code</td>
+<td>refactor/service-layer</td>
+</tr>
+<tr>
+<td>chore</td>
+<td>update dependencies or prod env</td>
+<td>chore/update-dependencies</td>
+</tr>
+<tr>
+<td>docs</td>
+<td>update or add documentation</td>
+<td>docs/update</td>
+</tr>
+</tbody>
+</table>
+<h2 id="descriptive-name">Descriptive Name</h2>
 <ul>
-<li>A developer completes initial implementation activities, creates a pull request, and requests a review.  </li>
-<li>The reviewer conducts a review and requests that changes should be made to the code. </li>
-<li>The developer again performs the implementation steps and requests another review. </li>
-<li>The reviewer either approves this new round of changes or indicates that more changes are needed. </li>
-<li>This cycling of the implementation and review stages (and their associated activities) will continue until the changes have been approved and the workflow can advance to the integration stage.</li>
+<li>The portion of the branch name following the standard prefix should briefly describe the branch's purpose.</li>
+<li>The branch name should be all lower case</li>
+<li>Separate words in the branch name with dashes to improve readability</li>
+<li>Branch names should not include special characters (other than the aforementioned dash or forward slash)</li>
 </ul>
+<h2 id="examples">Examples</h2>
+<div class="admonition success">
+<p class="admonition-title">good branch names</p>
+<p>Add search functionality to a navigation element:
+<code>feature/nav-search-function</code></p>
+<p>Update package.json:
+<code>chore/update-dependencies</code></p>
+<p>Apply an emergency production fix:
+<code>hotfix/error-handling-vulnerability</code></p>
+</div>
+<div class="admonition failure">
+<p class="admonition-title">bad branch names</p>
+<p>Add search functionality to a navigation element:
+<code>AddSearch_toNav</code></p>
+<p>Update package.json:
+<code>UPDATE THE DEPENDENCIES!!!</code></p>
+<p>Apply an emergency production fix:
+<code>feature-fix-bug</code></p>
 </div>
 
 
@@ -722,10 +565,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": ".", "features": [], "search": "assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.92b07e13.min.js"></script>
+      <script src="assets/javascripts/bundle.92b07e13.min.js"></script>
       
     
   </body>
