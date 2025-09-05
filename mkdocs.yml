@@ -12,6 +12,10 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
+plugins:
+  - search
+  - open-in-new-tab:
+      add_icon: true
 nav:
   - Home: index.md
   - Branching: branching.md
@@ -19,4 +23,5 @@ nav:
     - Workflow: workflow.md
     - Pull Request: pull-request.md
     - Code Review: code-review.md
+  - External Resources: external-resources.md
 use_directory_urls: false
