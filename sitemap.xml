@@ -2,22 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://city-of-saint-louis.github.io/central-docs/index.html</loc>
-         <lastmod>2025-09-04</lastmod>
+         <lastmod>2025-09-05</lastmod>
     </url>
     <url>
          <loc>https://city-of-saint-louis.github.io/central-docs/branching.html</loc>
-         <lastmod>2025-09-04</lastmod>
+         <lastmod>2025-09-05</lastmod>
     </url>
     <url>
          <loc>https://city-of-saint-louis.github.io/central-docs/code-review.html</loc>
-         <lastmod>2025-09-04</lastmod>
+         <lastmod>2025-09-05</lastmod>
+    </url>
+    <url>
+         <loc>https://city-of-saint-louis.github.io/central-docs/external-resources.html</loc>
+         <lastmod>2025-09-05</lastmod>
     </url>
     <url>
          <loc>https://city-of-saint-louis.github.io/central-docs/pull-request.html</loc>
-         <lastmod>2025-09-04</lastmod>
+         <lastmod>2025-09-05</lastmod>
     </url>
     <url>
          <loc>https://city-of-saint-louis.github.io/central-docs/workflow.html</loc>
-         <lastmod>2025-09-04</lastmod>
+         <lastmod>2025-09-05</lastmod>
     </url>
 </urlset>
