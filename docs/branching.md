@@ -15,12 +15,14 @@ the following standard prefixes:
 
 | Prefix    | Description                                   | Example                        |
 |-----------|-----------------------------------------------|--------------------------------|
-| feature   | add new functionality                         | feature/add-backend-logging    |
-| bugfix    | address a bug or issue                        | fix/handle-database-error      |
-| hotfix    | address a bug or issue (direct push to main)  | hotfix/controller-infinite-loop|
-| refactor  | modify or improve existing code               | refactor/service-layer         |
-| chore     | update dependencies or prod env               | chore/update-dependencies      |
-| docs      | update or add documentation                   | docs/update
+| bugfix   	| address a bug or issue                        | bugfix/handle-database-error   |
+| chore    	| maintenance or dependency updates             | chore/update-dependencies   	 |
+| cicd    	| ci/cd or deployment related					| cicd/validation-workflow  	 |
+| docs  	| add or modify documentation               	| docs/add-readme-section        |
+| feature   | add new functionality               			| feature/add-backend-logging    |
+| hotfix    | emergency patch for immediate deployment      | hotfix/controller-infinite-loop|
+| refactor	| improve existing code							| refactor/service-layer		 |
+
 
 ## Descriptive Name
 - The portion of the branch name following the standard prefix should briefly describe the branch's purpose.
