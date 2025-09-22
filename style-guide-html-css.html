@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://city-of-saint-louis.github.io/central-docs/branching.html">
+        <link rel="canonical" href="https://city-of-saint-louis.github.io/central-docs/style-guide-html-css.html">
       
       
-        <link rel="prev" href="workflow.html">
+        <link rel="prev" href="style-guide-coldfusion.html">
       
       
-        <link rel="next" href="pull-request.html">
+        <link rel="next" href="style-guide-javascript.html">
       
       
       <link rel="icon" href="assets/bookshelf.svg">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Branching - Central Docs</title>
+        <title>HTML/CSS - Central Docs</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#branching" class="md-skip">
+        <a href="#style-guides-htmlcss" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Branching
+              HTML/CSS
             
           </span>
         </div>
@@ -241,18 +241,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -268,7 +270,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Style Guides
@@ -302,10 +304,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="style-guide-html-css.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    HTML/CSS
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="style-guide-html-css.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -316,6 +340,35 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#html" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTML
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -424,20 +477,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -453,7 +504,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Workflow
@@ -487,32 +538,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Branching
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="branching.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="branching.html" class="md-nav__link">
         
   
   
@@ -523,71 +552,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#branch-name-components" class="md-nav__link">
-    <span class="md-ellipsis">
-      Branch Name Components
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#standard-prefixes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Standard Prefixes
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#descriptive-name" class="md-nav__link">
-    <span class="md-ellipsis">
-      Descriptive Name
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      Examples
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#workflow-tools-branch-name-checking" class="md-nav__link">
-    <span class="md-ellipsis">
-      Workflow Tools: Branch Name Checking
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -695,45 +659,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#branch-name-components" class="md-nav__link">
+  <a href="#html" class="md-nav__link">
     <span class="md-ellipsis">
-      Branch Name Components
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#standard-prefixes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Standard Prefixes
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#descriptive-name" class="md-nav__link">
-    <span class="md-ellipsis">
-      Descriptive Name
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      Examples
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#workflow-tools-branch-name-checking" class="md-nav__link">
-    <span class="md-ellipsis">
-      Workflow Tools: Branch Name Checking
+      HTML
     </span>
   </a>
   
@@ -758,96 +686,41 @@
   
 
 
-<h1 id="branching">Branching</h1>
-<p>Branching is an integral part of our workflow; it facilitates multiple independent lines of development
-and reduces the risk of conflicts in a collaborative working environment. By packaging changes into 
-focused feature branches, we ensure that the main branch is kept clean and stable and that all changes
-are isolated and easy to review and test. </p>
-<h2 id="branch-name-components">Branch Name Components</h2>
-<p>A branch name consist of two components: A standard prefix and a descriptive name. The prefix should
-be separated from the branch name by a single <code>/</code> character:<br />
-<code>prefix/descriptive-branch-name</code></p>
-<h2 id="standard-prefixes">Standard Prefixes</h2>
-<p>Prefixes help to quickly identify the purpose of a branch, and all branch names should begin with one of
-the following standard prefixes:</p>
-<table>
-<thead>
-<tr>
-<th>Prefix</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>bugfix</td>
-<td>address a bug or issue</td>
-<td>bugfix/handle-database-error</td>
-</tr>
-<tr>
-<td>chore</td>
-<td>maintenance or dependency updates</td>
-<td>chore/update-dependencies</td>
-</tr>
-<tr>
-<td>cicd</td>
-<td>ci/cd or deployment related</td>
-<td>cicd/validation-workflow</td>
-</tr>
-<tr>
-<td>docs</td>
-<td>add or modify documentation</td>
-<td>docs/add-readme-section</td>
-</tr>
-<tr>
-<td>feature</td>
-<td>add new functionality</td>
-<td>feature/add-backend-logging</td>
-</tr>
-<tr>
-<td>hotfix</td>
-<td>emergency patch for immediate deployment</td>
-<td>hotfix/controller-infinite-loop</td>
-</tr>
-<tr>
-<td>refactor</td>
-<td>improve existing code</td>
-<td>refactor/service-layer</td>
-</tr>
-</tbody>
-</table>
-<h2 id="descriptive-name">Descriptive Name</h2>
-<ul>
-<li>The portion of the branch name following the standard prefix should briefly describe the branch's purpose.</li>
-<li>The branch name should be all lower case</li>
-<li>Separate words in the branch name with dashes to improve readability</li>
-<li>Branch names should not include special characters (other than the aforementioned dash or forward slash)</li>
-</ul>
-<h2 id="examples">Examples</h2>
-<div class="admonition success">
-<p class="admonition-title">good branch names</p>
-<p>Add search functionality to a navigation element:
-<code>feature/nav-search-function</code></p>
-<p>Update package.json:
-<code>chore/update-dependencies</code></p>
-<p>Apply an emergency production fix:
-<code>hotfix/error-handling-vulnerability</code></p>
-</div>
-<div class="admonition failure">
-<p class="admonition-title">bad branch names</p>
-<p>Add search functionality to a navigation element:
-<code>AddSearch_toNav</code></p>
-<p>Update package.json:
-<code>UPDATE THE DEPENDENCIES!!!</code></p>
-<p>Apply an emergency production fix:
-<code>feature-fix-bug</code></p>
-</div>
-<h2 id="workflow-tools-branch-name-checking">Workflow Tools: Branch Name Checking</h2>
-<p>Our organization's <a href="https://github.com/city-of-saint-louis/.github">.github repository</a> contains a <a href="https://github.com/city-of-saint-louis/.github/blob/main/config/allowed-prefixes.yml">list 
-of standard branch prefixes</a> 
-which allows us to maintain the same set of standard branch prefixes across the organization. 
-This list can be referenced in branch name check workflows in any child repository. 
-For instructions about how to implement this workflow, please see the <a href="https://github.com/city-of-saint-louis/.github/blob/main/docs/branch-name-workflow-usage.md">workflow usage documentation</a>. </p>
+<h1 id="style-guides-htmlcss">Style Guides : HTML/CSS</h1>
+<h2 id="html">HTML</h2>
+<div class="language-html highlight"><span class="filename">Tags are lowercase</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cm">&lt;!-- Incorrect --&gt;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;/images/image.png&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Picture of a flower&quot;</span> 
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="na">title</span><span class="o">=</span><span class="s">&quot;Picture of a flower&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="cm">&lt;!-- Correct --&gt;</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;/images/image.png&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Picture of a flower&quot;</span> 
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="na">title</span><span class="o">=</span><span class="s">&quot;Picture of a flower&quot;</span><span class="p">&gt;</span>
+</span></code></pre></div>
+<div class="language-html highlight"><span class="filename">Escape special characters</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cm">&lt;!-- Incorrect --&gt;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>http://example.com/search?name=detail<span class="err">&amp;</span>uid=165
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="cm">&lt;!-- Correct --&gt;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>http://example.com/search?name=detail<span class="ni">&amp;amp;</span>uid=15
+</span></code></pre></div>
+<div class="language-html highlight"><span class="filename">Use a new line for every block, list, or table element, and indent every such child element</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">&lt;</span><span class="nt">blockquote</span><span class="p">&gt;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>        <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span>Space<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;</span>, the final frontier.
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">&lt;/</span><span class="nt">blockquote</span><span class="p">&gt;</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Moe<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Larry<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Curly<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>    <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>        <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Income<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>        <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Taxes<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>    <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>$5.00<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>$4.40<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+</span></code></pre></div>
 
 
 

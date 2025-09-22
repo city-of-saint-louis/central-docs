@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://city-of-saint-louis.github.io/central-docs/branching.html">
+        <link rel="canonical" href="https://city-of-saint-louis.github.io/central-docs/style-guide-sql.html">
       
       
-        <link rel="prev" href="workflow.html">
+        <link rel="prev" href="style-guide-python.html">
       
       
-        <link rel="next" href="pull-request.html">
+        <link rel="next" href="style-guide-typescript.html">
       
       
       <link rel="icon" href="assets/bookshelf.svg">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Branching - Central Docs</title>
+        <title>SQL - Central Docs</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#branching" class="md-skip">
+        <a href="#style-guides-sql" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Branching
+              SQL
             
           </span>
         </div>
@@ -241,18 +241,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -268,7 +270,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Style Guides
@@ -371,10 +373,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="style-guide-sql.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="style-guide-sql.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -385,6 +396,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -424,20 +436,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -453,7 +463,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Workflow
@@ -487,32 +497,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Branching
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="branching.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="branching.html" class="md-nav__link">
         
   
   
@@ -523,71 +511,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#branch-name-components" class="md-nav__link">
-    <span class="md-ellipsis">
-      Branch Name Components
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#standard-prefixes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Standard Prefixes
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#descriptive-name" class="md-nav__link">
-    <span class="md-ellipsis">
-      Descriptive Name
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      Examples
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#workflow-tools-branch-name-checking" class="md-nav__link">
-    <span class="md-ellipsis">
-      Workflow Tools: Branch Name Checking
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -688,59 +611,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#branch-name-components" class="md-nav__link">
-    <span class="md-ellipsis">
-      Branch Name Components
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#standard-prefixes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Standard Prefixes
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#descriptive-name" class="md-nav__link">
-    <span class="md-ellipsis">
-      Descriptive Name
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      Examples
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#workflow-tools-branch-name-checking" class="md-nav__link">
-    <span class="md-ellipsis">
-      Workflow Tools: Branch Name Checking
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -758,96 +628,7 @@
   
 
 
-<h1 id="branching">Branching</h1>
-<p>Branching is an integral part of our workflow; it facilitates multiple independent lines of development
-and reduces the risk of conflicts in a collaborative working environment. By packaging changes into 
-focused feature branches, we ensure that the main branch is kept clean and stable and that all changes
-are isolated and easy to review and test. </p>
-<h2 id="branch-name-components">Branch Name Components</h2>
-<p>A branch name consist of two components: A standard prefix and a descriptive name. The prefix should
-be separated from the branch name by a single <code>/</code> character:<br />
-<code>prefix/descriptive-branch-name</code></p>
-<h2 id="standard-prefixes">Standard Prefixes</h2>
-<p>Prefixes help to quickly identify the purpose of a branch, and all branch names should begin with one of
-the following standard prefixes:</p>
-<table>
-<thead>
-<tr>
-<th>Prefix</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>bugfix</td>
-<td>address a bug or issue</td>
-<td>bugfix/handle-database-error</td>
-</tr>
-<tr>
-<td>chore</td>
-<td>maintenance or dependency updates</td>
-<td>chore/update-dependencies</td>
-</tr>
-<tr>
-<td>cicd</td>
-<td>ci/cd or deployment related</td>
-<td>cicd/validation-workflow</td>
-</tr>
-<tr>
-<td>docs</td>
-<td>add or modify documentation</td>
-<td>docs/add-readme-section</td>
-</tr>
-<tr>
-<td>feature</td>
-<td>add new functionality</td>
-<td>feature/add-backend-logging</td>
-</tr>
-<tr>
-<td>hotfix</td>
-<td>emergency patch for immediate deployment</td>
-<td>hotfix/controller-infinite-loop</td>
-</tr>
-<tr>
-<td>refactor</td>
-<td>improve existing code</td>
-<td>refactor/service-layer</td>
-</tr>
-</tbody>
-</table>
-<h2 id="descriptive-name">Descriptive Name</h2>
-<ul>
-<li>The portion of the branch name following the standard prefix should briefly describe the branch's purpose.</li>
-<li>The branch name should be all lower case</li>
-<li>Separate words in the branch name with dashes to improve readability</li>
-<li>Branch names should not include special characters (other than the aforementioned dash or forward slash)</li>
-</ul>
-<h2 id="examples">Examples</h2>
-<div class="admonition success">
-<p class="admonition-title">good branch names</p>
-<p>Add search functionality to a navigation element:
-<code>feature/nav-search-function</code></p>
-<p>Update package.json:
-<code>chore/update-dependencies</code></p>
-<p>Apply an emergency production fix:
-<code>hotfix/error-handling-vulnerability</code></p>
-</div>
-<div class="admonition failure">
-<p class="admonition-title">bad branch names</p>
-<p>Add search functionality to a navigation element:
-<code>AddSearch_toNav</code></p>
-<p>Update package.json:
-<code>UPDATE THE DEPENDENCIES!!!</code></p>
-<p>Apply an emergency production fix:
-<code>feature-fix-bug</code></p>
-</div>
-<h2 id="workflow-tools-branch-name-checking">Workflow Tools: Branch Name Checking</h2>
-<p>Our organization's <a href="https://github.com/city-of-saint-louis/.github">.github repository</a> contains a <a href="https://github.com/city-of-saint-louis/.github/blob/main/config/allowed-prefixes.yml">list 
-of standard branch prefixes</a> 
-which allows us to maintain the same set of standard branch prefixes across the organization. 
-This list can be referenced in branch name check workflows in any child repository. 
-For instructions about how to implement this workflow, please see the <a href="https://github.com/city-of-saint-louis/.github/blob/main/docs/branch-name-workflow-usage.md">workflow usage documentation</a>. </p>
+<h1 id="style-guides-sql">Style Guides : SQL</h1>
 
 
 
