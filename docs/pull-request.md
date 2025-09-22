@@ -4,11 +4,13 @@ A pull request (or PR) is used to propose changes to a repository. It also indic
 that a set of changes is _complete and ready for review_. 
 ___
 ## Pull Request Checklist
+
 Before creating a new pull request, developers should be able to answer "yes" to 
-all of these questions:
-- Is all code complete and functional?
-- Has all code has been tested locally by the developer?
-- Will a reviewer be able to run and test the code?
+all of these questions: 
+
+- Is all code complete and functional? 
+- Has all code has been tested locally by the developer? 
+- Will a reviewer be able to run and test the code? 
 ___
 ## Creating a Pull Request
 1. Commit all changes and push your local feature branch to the remote repository

@@ -53,3 +53,11 @@ the following standard prefixes:
 
     Apply an emergency production fix:
     `feature-fix-bug`
+
+## Workflow Tools: Branch Name Checking
+Our organization's [.github repository](https://github.com/city-of-saint-louis/.github) contains a [list 
+of standard branch prefixes](https://github.com/city-of-saint-louis/.github/blob/main/config/allowed-prefixes.yml) 
+which allows us to maintain the same set of standard branch prefixes across the organization. 
+This list can be referenced in branch name check workflows in any child repository. 
+For instructions about how to implement this workflow, please see the [workflow usage documentation](https://github.com/city-of-saint-louis/.github/blob/main/docs/branch-name-workflow-usage.md). 
+

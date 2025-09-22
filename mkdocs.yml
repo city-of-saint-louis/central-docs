@@ -18,9 +18,9 @@ plugins:
       add_icon: true
 nav:
   - Home: index.md
-  - Branching: branching.md
   - Workflow: 
     - Workflow: workflow.md
+    - Branching: branching.md
     - Pull Request: pull-request.md
     - Code Review: code-review.md
   - External Resources: external-resources.md
