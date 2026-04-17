@@ -21,8 +21,6 @@ the following standard prefixes:
 | docs  	| add or modify documentation               	| docs/add-readme-section        |
 | feature   | add new functionality               			| feature/add-backend-logging    |
 | hotfix    | emergency patch for immediate deployment      | hotfix/controller-infinite-loop|
-| refactor	| improve existing code							| refactor/service-layer		 |
-
 
 ## Descriptive Name
 - The portion of the branch name following the standard prefix should briefly describe the branch's purpose.
