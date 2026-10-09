@@ -26,6 +26,7 @@ plugins:
       add_icon: true
 nav:
   - Home: index.md
+  - Golden Rules: golden-rules.md
   - Style Guides:
     - ColdFusion: style-guide-coldfusion.md
     - HTML/CSS: style-guide-html-css.md

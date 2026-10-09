@@ -9,7 +9,7 @@ ___
 #### Code
 The developer makes code changes in their local development environment
 #### Test
-The developer tests code changes in their local development environment
+The developer tests code changes in their local development environment and writes tests that cover their work. 
 #### Push
 The developer uploads changes to a feature branch in the remote repository
 ___
@@ -17,18 +17,17 @@ ___
 #### Create Pull Request 
 The developer creates a new [pull request](pull-request.md)
 #### Request Review
-The developer requests a [code review](code-review.md) from one or more designated reviewers
+The developer requests a [code review](code-review.md) from one or more other developers
 #### Conduct Review 
-The reviewer reviews changes made to the code and either approves them or requests additional changes
-
+The reviewers review changes made to the code and either approve them or request additional changes. CI Checks must pass.
 ___
 ### Integration
-#### Merge 
-The developer merges the code into the main branch
-#### Resolve Conflicts
-The developer resolves any conflicts that arise during the merge operation
+#### Merge
+The developer resolves any conflicts with the main branch, then merges the code. If resolving conflicts requires significant changes, request another review first.
 #### Deploy
 Changes are deployed to the target environment
+#### Verify
+The developer confirms the changes work as expected in the target environment
 
 ___
 !!! info "Iterative Process"
