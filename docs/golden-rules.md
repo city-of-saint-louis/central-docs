@@ -23,7 +23,7 @@ Use the linting and formatting tools configured in the repository. Don't change 
 New work must include tests. Refactored code that didn't already have coverage must include tests. CI must pass before merging. Backfilling coverage gaps should be handled in a dedicated PR.
 
 ## Documentation
-Update the README and other relevant docs when setup (e.g. new environment changes, build steps) or behavior changes.
+Update the README and other relevant docs when setup (e.g. new environment variables, build steps) or behavior changes.
 
 ## PR Scope
 Keep your PR focused around a single purpose. When opening a PR, ask the question "Could this be reviewed in one sitting by one person?" If the answer is no, split it up. Commit messages and PR descriptions must explain what changed and why. Link the related ticket or issue if one exists.
@@ -35,4 +35,4 @@ Changes that add, remove, or update a package must be made in a dedicated PR. If
 Merged work must not break anything or expose unfinished features to users. If a feature is too large for one PR, split it into pieces that each work on their own, or keep unfinished parts unreachable until the final PR connects them.
 
 ## Merging
-Once your PR is approved by a reviewer, merge it yourself and perform any post-merge testing needed. Don't merge without an approval, even if the repository allows it. Senior devs and GitHub admins may merge without approval when necessary.
+Once your PR is approved by a reviewer, merge it yourself and perform any post-merge testing needed. Don't merge without an approval, even if the repository allows it. Senior developers and GitHub admins may merge without approval when necessary.
