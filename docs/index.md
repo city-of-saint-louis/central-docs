@@ -10,3 +10,9 @@ Standards should not be conceived in a vacuum, nor should they be considered imm
 Some guidelines should be interpreted as "best practices" rather than true standards. Where present, these will be clearly indicated as such. 
 
 It is also possible for something to be situationally mandatory. RepoA includes structured comments for some functions. RepoB enforces structured comments in its linter rules. Structured comments are a best practice for RepoA but a mandatory standard for RepoB.
+
+<br>
+
+!!! tip "Golden Rules"
+    
+    The [Golden Rules](golden-rules.md) apply to all work. Read them first.
