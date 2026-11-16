@@ -493,3 +493,86 @@ it("returns the parcel with the requested ID", async () => {
   approach for new command-line and application logging.
 - **File names:** the API contains kebab-case, camelCase, and PascalCase
   filenames. Confirm a preferred naming convention for new files.
+
+## API Integrations and HTTP Requests
+
+Both repositories use Axios for HTTP integrations, including Cityworks and GIS
+services. Keep request parameters and headers in the Axios configuration, set
+a finite timeout for new requests, and let failures reach the appropriate
+error-handling layer.
+
+```javascript title="Pass request data through Axios options"
+// Incorrect
+const response = await axios.get(`${baseUrl}/parcels?parcelId=${parcelId}`);
+
+// Correct
+const response = await axios.get(`${baseUrl}/parcels`, {
+  params: { parcelId },
+  timeout: 10000,
+});
+```
+
+For authenticated requests, use the authorization header or configured client
+pattern already used by the integration. Do not put credentials or tokens in
+URLs.
+
+## Security and Sensitive Data
+
+The repositories read credentials and tokens from environment variables, and
+their `.gitignore` files exclude local environment files. Keep secrets out of
+source code, committed environment files, error messages, and logs. Log
+non-sensitive context that helps diagnose a failure instead.
+
+```javascript title="Do not log credentials"
+// Incorrect
+logger.error("Authentication failed", { password, token });
+
+// Correct
+logger.error("Authentication failed", { service: "Cityworks" });
+```
+
+## Configuration and Environment Variables
+
+Both repositories use `process.env`; the integrations repository also provides
+an `.env.example` and checks environment-variable coverage in its tests. Read
+configuration from the environment rather than embedding deployment-specific
+URLs or credentials. Validate required values before using them, and parse
+numeric values once at the configuration boundary.
+
+```javascript title="Validate required configuration"
+// Incorrect
+const baseURL = process.env.CITYWORKS_BASE_URL || "https://production.example";
+
+// Correct
+const baseURL = process.env.CITYWORKS_BASE_URL;
+if (!baseURL) {
+  throw new Error("CITYWORKS_BASE_URL is not defined");
+}
+```
+
+## Testing and Test Automation
+
+Both repositories use Jest. API endpoint tests use Supertest, and integration
+tests mock Axios and other external dependencies. Keep tests deterministic by
+mocking network calls, and verify both successful responses and failure
+behavior.
+
+```javascript title="Test an HTTP integration with a mock"
+// Incorrect
+it("loads a parcel", async () => {
+  const parcel = await getParcel("12345");
+  expect(parcel.parcelId).toBe("12345");
+});
+
+// Correct
+it("returns the parcel from the HTTP response", async () => {
+  axios.get.mockResolvedValueOnce({
+    data: { parcelId: "12345" },
+  });
+
+  await expect(getParcel("12345")).resolves.toEqual({
+    parcelId: "12345",
+  });
+  expect(axios.get).toHaveBeenCalledTimes(1);
+});
+```
