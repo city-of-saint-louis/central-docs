@@ -138,13 +138,20 @@ instead.
 
 ```javascript title="Choose the narrowest declaration"
 // Incorrect
-var previousAttempt = 0;
-previousAttempt += 1;
+for (const i = 0; i < parcelIds.length; i++) {
+  processParcel(parcelIds[i]);
+}
 
 // Correct
-let attempt = 0;
-attempt += 1;
+for (let i = 0; i < parcelIds.length; i++) {
+  processParcel(parcelIds[i]);
+}
 ```
+
+The incorrect example tries to change `i` with `i++`, but a `const` binding
+cannot be reassigned. Use `let` for a loop counter that changes on each
+iteration. Avoid `var`; use `const` for bindings that do not change and `let`
+when reassignment is needed.
 
 For values that do not change, use `const`:
 
