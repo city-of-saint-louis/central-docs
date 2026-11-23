@@ -510,39 +510,59 @@ For authenticated requests, use the authorization header or configured client
 pattern already used by the integration. Do not put credentials or tokens in
 URLs.
 
-## Security and Sensitive Data
-
-The repositories read credentials and tokens from environment variables, and
-their `.gitignore` files exclude local environment files. Keep secrets out of
-source code, committed environment files, error messages, and logs. Log
-non-sensitive context that helps diagnose a failure instead.
-
-```javascript title="Do not log credentials"
-// Incorrect
-logger.error("Authentication failed", { password, token });
-
-// Correct
-logger.error("Authentication failed", { service: "Cityworks" });
-```
-
 ## Configuration and Environment Variables
 
-Both repositories use `process.env`; the integrations repository also provides
-an `.env.example` and checks environment-variable coverage in its tests. Read
-configuration from the environment rather than embedding deployment-specific
-URLs or credentials. Validate required values before using them, and parse
-numeric values once at the configuration boundary.
+Both repositories use `process.env`; the integrations repository also checks
+environment-variable coverage in its tests. Read deployment-specific values
+from the environment instead of hard-coding them. Validate required values
+before use, and parse and validate numeric values once when defining
+configuration.
 
-```javascript title="Validate required configuration"
+### Validate required configuration
+
+Check that required environment variables are present before using them. Avoid
+silent defaults that can send requests to an unintended service.
+
+```javascript title="Validate a required service URL"
 // Incorrect
-const baseURL = process.env.CITYWORKS_BASE_URL || "https://production.example";
+const baseUrl = process.env.CITYWORKS_BASE_URL || "https://production.example";
+const client = axios.create({ baseURL: baseUrl });
 
 // Correct
-const baseURL = process.env.CITYWORKS_BASE_URL;
-if (!baseURL) {
-  throw new Error("CITYWORKS_BASE_URL is not defined");
+const baseUrl = process.env.CITYWORKS_BASE_URL;
+if (!baseUrl) {
+  throw new Error("CITYWORKS_BASE_URL is required");
 }
+
+const client = axios.create({ baseURL: baseUrl });
 ```
+
+The incorrect example silently substitutes a production URL when configuration
+is missing. The correct example reports the missing setting before creating the
+client.
+
+### Parse numeric configuration at the boundary
+
+Environment variables are strings. Convert numeric settings once when
+configuration is created, and reject values that are not valid for their use.
+
+```javascript title="Parse and validate a numeric setting"
+// Incorrect
+const port = process.env.PORT || 5057;
+app.listen(port);
+
+// Correct
+const port = Number(process.env.PORT ?? "5057");
+if (!Number.isInteger(port) || port <= 0) {
+  throw new Error("PORT must be a positive integer");
+}
+
+app.listen(port);
+```
+
+The incorrect example passes an environment string through without checking
+that it is a valid port. The correct example converts it once and checks the
+result before starting the server.
 
 ## Testing and Test Automation
 
