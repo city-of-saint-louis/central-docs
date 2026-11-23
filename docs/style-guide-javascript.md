@@ -3,27 +3,137 @@
 ## Introduction
 
 This guide is based on the JavaScript in the City of St. Louis
-[`lco-integrations-and-automations`](https://github.com/city-of-saint-louis/lco-integrations-and-automations)
-and [`api`](https://github.com/city-of-saint-louis/api) repositories. It describes
 common practices and recommends a consistent standard where the repositories
 differ. Follow the existing style when editing an established module; use the
 recommendations below for new code.
 
 ## General JavaScript Guidelines
 
-### Prefer clear, direct code
+### Use descriptive names
 
-Use descriptive names and straightforward control flow. Avoid compressing
-multiple operations into a hard-to-read expression.
+Choose names that describe the parcel, neighborhood, and case data used by the
+repositories. Descriptive names make request parameters and helper variables
+easier to understand without searching for their surrounding context.
 
-```javascript title="Keep expressions easy to follow"
+```javascript title="Name request values after the data they contain"
 // Incorrect
-const parcelFromLongCheck =
-  input && input.parcel && input.parcel.id ? input.parcel : null;
+const p = req.params.parcelId;
 
 // Correct
-const parcel = input?.parcel?.id ? input.parcel : null;
+const { parcelId } = req.params;
 ```
+
+The `p` name does not explain that the value is a parcel ID. The destructured
+name in the correct example matches the API controller parameter and immediately
+identifies the data.
+
+```javascript title="Name parcel and neighborhood helpers clearly"
+// Incorrect
+const d = v instanceof Date ? v : new Date(v);
+
+// Correct
+const date = v instanceof Date ? v : new Date(v);
+```
+
+The `d` name does not describe the Date value clearly. `date` makes the value
+easier to recognize in the same change-reporting code.
+
+```javascript title="Name lookup accumulators clearly"
+// Incorrect
+function getNeighborhoodsToWardsLookup(neighborhoodsAndWards) {
+  return neighborhoodsAndWards.reduce((dict, neighborhoodAndWard) => {
+    const nhdNum = Number(neighborhoodAndWard.nhdNum);
+    const ward = Number(neighborhoodAndWard.ward);
+    if (dict[nhdNum]) {
+      if (ward) {
+        dict[nhdNum].push(ward);
+      }
+    } else {
+      dict[nhdNum] = ward ? [ward] : [];
+    }
+    return dict;
+  }, {});
+}
+
+// Correct
+function getNeighborhoodsToWardsLookup(neighborhoodsAndWards) {
+  return neighborhoodsAndWards.reduce(
+    (neighborhoodLookup, neighborhoodAndWard) => {
+      const nhdNum = Number(neighborhoodAndWard.nhdNum);
+      const ward = Number(neighborhoodAndWard.ward);
+      if (neighborhoodLookup[nhdNum]) {
+        if (ward) {
+          neighborhoodLookup[nhdNum].push(ward);
+        }
+      } else {
+        neighborhoodLookup[nhdNum] = ward ? [ward] : [];
+      }
+      return neighborhoodLookup;
+    },
+    {},
+  );
+}
+```
+
+The repository's `dict` accumulator does not state which data it contains.
+`neighborhoodLookup` identifies the accumulated object and makes the ward
+mapping easier to follow.
+
+### Prefer straightforward control flow
+
+Write branches and decisions so they can be read one step at a time. Keep
+guard clauses and geometry or address decisions explicit instead of hiding
+multiple checks in deeply nested expressions.
+
+```javascript title="Use guard clauses for missing parcel IDs"
+// Incorrect
+function parseParcelId(parcelId) {
+  if (!parcelId) {
+    return null;
+  }
+  const filteredId = filterNonNumbers(parcelId);
+  if (isInvalidNumberString(filteredId)) {
+    return null;
+  } else {
+    return filteredId;
+  }
+}
+
+// Correct
+function parseParcelId(parcelId) {
+  if (!parcelId) {
+    return null;
+  }
+
+  const filteredId = filterNonNumbers(parcelId);
+  if (isInvalidNumberString(filteredId)) {
+    return null;
+  }
+
+  return filteredId;
+}
+```
+
+The `else` branch is not needed after the invalid-ID guard. Returning directly
+in the correct example keeps the success path shorter and easier to follow.
+
+```javascript title="Use an explicit branch for address unit lookup"
+// Incorrect
+const startUnitSearch =
+  suffixIdx !== -1 ? suffixIdx + 1 : typeIdx !== -1 ? typeIdx + 1 : idx;
+
+// Correct
+let startUnitSearch = idx;
+if (suffixIdx !== -1) {
+  startUnitSearch = suffixIdx + 1;
+} else if (typeIdx !== -1) {
+  startUnitSearch = typeIdx + 1;
+}
+```
+
+The nested ternary contains two decisions in a compact expression. The explicit
+branches show each address fallback in sequence, making the unit lookup easier
+to understand and change.
 
 ### Use the project's configured tools
 
@@ -58,18 +168,24 @@ their names are part of that service's contract.
 
 ### Use `const` unless a binding must be reassigned
 
-The repositories mainly use `const`, with `let` for values that change. A few
-`var` declarations remain in the integrations code; use `let` or `const`
-instead.
+The repositories mainly use `const`, with `let` for values that change. Do not
+use `var` in new code; a few legacy `var` declarations remain in the
+integrations code.
 
 ```javascript title="Choose the narrowest declaration"
-// Incorrect
-var previousAttempt = 0;
-previousAttempt += 1;
-
-// Correct
+// Avoid var in new code. Use const or let instead.
+const parcelId = "12345";
 let attempt = 0;
-attempt += 1;
+
+// Incorrect: const cannot be reassigned
+for (const i = 0; i < initial.length - 1; ++i) {
+  let j = i;
+}
+
+// Correct: let is needed for a changing loop counter
+for (let i = 0; i < initial.length - 1; ++i) {
+  let j = i;
+}
 ```
 
 For values that do not change, use `const`:
@@ -87,113 +203,49 @@ ordinary local values.
 
 ## Functions and Methods
 
-### Use descriptive names and keep each function focused
+### Use descriptive names for functions
 
-Name functions for the action or result they represent. Extract repeated or
-distinct work into a helper rather than growing a function with unrelated
-responsibilities.
+Name a function for the action or result it represents. A specific name makes
+its purpose clear when it is called elsewhere in the repository.
 
-```javascript title="Name a function for its purpose"
-// Incorrect
-function process(value) {
-  return value;
+```javascript title="Name parcel helpers clearly"
+// Correct
+function parseParcelId(parcelId) {
+  // Filter and validate the parcel ID.
 }
 
 // Correct
-function getParcelById(parcelId) {
-  return parcelRepository.findById(parcelId);
+async function getNeighborhoodName(neighborhoodNumber) {
+  // Retrieve the neighborhood name.
 }
 ```
 
-### Use one named-function style consistently within a module
+`parseParcelId` clearly describes a parcel ID parsing operation, and
+`getNeighborhoodName` identifies both the action and the neighborhood input.
 
-The integrations code and many API services use function declarations; API
-controllers also commonly use `const`-assigned arrow functions. For new
-standalone helpers, prefer named function declarations and use arrow functions
-for callbacks. When editing an existing module, follow its established pattern.
+### Keep each function focused
 
-```javascript title="Use arrow functions for callbacks"
-// Incorrect
-const parcelIdsWithFunctionCallback = parcels.map(function (parcel) {
-  return parcel.id;
-});
+Give each function one clear responsibility. Extract distinct work into
+helpers so functions are easier to understand and maintain.
 
+```javascript title="Separate organization processing from data lookups"
 // Correct
-const parcelIds = parcels.map((parcel) => parcel.id);
-```
-
-## Formatting and Indentation
-
-### Use two spaces, semicolons, and double quotes
-
-These are common in both repositories and are specified in the integrations
-repository's Prettier configuration. Keep statements readable and use the
-configured formatter where available.
-
-```javascript title="Format statements consistently"
-// Incorrect
-const unformattedParcel = {id: '12345'}
-
-// Correct
-const parcel = { id: "12345" };
-```
-
-### Break long expressions across lines
-
-Put each item on its own line when an object, argument list, or expression is
-long enough to be difficult to scan.
-
-```javascript title="Wrap long calls"
-// Incorrect
-async function loadParcelWithoutLineBreaks() {
-  const parcelResult = await getParcel(parcelId, includeAssessments, includeImages, includeNeighborhood);
-}
-
-// Correct
-async function loadParcelWithLineBreaks() {
-  const parcelResult = await getParcel(
-    parcelId,
-    includeAssessments,
-    includeImages,
-    includeNeighborhood,
-  );
+function processOrganizations(organizations, nhdsAndWardsRelationships) {
+  const aggregatedOrganizations = aggregateOrganzations(organizations);
+  const lookup = getNeighborhoodsToWardsLookup(nhdsAndWardsRelationships);
+  return aggregatedOrganizations.map((org) => ({
+    ...org,
+    wards: mapUniqueWards(org.nhdNums, lookup),
+    web: parseWebsite(org.web),
+  }));
 }
 ```
+
+This orchestration function uses focused helpers for aggregation, neighborhood
+lookups, ward mapping, and website normalization.
+
 
 ## Objects and Arrays
-
-### Use readable multiline objects and arrays
-
-Use a compact layout for short collections and one item per line for longer
-ones. Add a trailing comma in multiline collections.
-
-```javascript title="Lay out collections clearly"
-// Incorrect
-const longParcel = {
-parcelId: "12345", ward: 6, neighborhood: "Example", city: "St. Louis", state: "MO", postalCode: "63101"
-};
-const longParcelIds = ["12345", "67890", "54321", "09876", "11223", "44556", "77889"];
-
-// Correct
-const parcel = {
-  parcelId: "12345",
-  ward: 6,
-  neighborhood: "Example",
-  city: "St. Louis",
-  state: "MO",
-  postalCode: "63101",
-};
-
-const parcelIds = [
-  "12345",
-  "67890",
-  "54321",
-  "09876",
-  "11223",
-  "44556",
-  "77889",
-];
-```
 
 ### Destructure values when it improves clarity
 
@@ -325,18 +377,18 @@ error at multiple layers.
 
 ## Imports and Exports
 
-### Use the existing CommonJS module pattern
+### Don't mix CommonJS and ES module styles
 
-The application code in both reviewed repositories uses CommonJS
-(`require` and `module.exports`). Keep a module's imports and exports consistent
-with that pattern.
+Both repositories use CommonJS application modules. Use `require()` and
+`module.exports` consistently. Dynamic imports may be appropriate for an
+ESM-only dependency, but do not add ES module syntax to the repository's
+CommonJS source modules.
 
 ```javascript title="Use CommonJS consistently"
-// Incorrect
-async function loadParcelFromESModule() {
-  const { getParcel } = await import("./parcels.js");
-  return getParcel;
-}
+// Incorrect: ES module syntax in a CommonJS project
+import { getParcel } from "./parcels.js";
+
+export { getParcel };
 
 // Correct
 const { getParcel } = require("./parcels");
@@ -369,17 +421,21 @@ retryCount += 1;
 
 ### Use the repository's logger for operational messages
 
-The API uses a Winston-backed logger; the integrations code uses Winston and
-also prints some command-line status messages. Use the existing logger for
-application errors and structured context. Keep `console` output for
-intentional command-line output, not temporary debugging.
+Use the logger configured in the repository for errors, warnings, and
+operational messages. Include context that helps diagnose the problem, such as
+IDs and the operation being performed. Don't leave `console.log` calls in
+committed code for debugging. Intentional human-facing output in a command-line
+script is an exception, but runtime application errors should use the
+repository logger.
 
 ```javascript title="Log useful error context"
 // Incorrect
 console.log(error);
 
 // Correct
-logger.error("Failed to load parcel", { parcelId, error });
+logger.error("failed to generate .env.example", {
+  error: error.message,
+});
 ```
 
 ## Null, Undefined, and Optional Values
@@ -398,18 +454,51 @@ const pageSizeWithOr = requestedPageSize || 10;
 const pageSizeWithNullishFallback = requestedPageSize ?? 10;
 ```
 
-Check optional properties before using them:
+Check optional properties before using them. Optional chaining is appropriate
+when an external response may omit an intermediate property. After safely
+reading the value, handle `undefined` or `null` explicitly when missing data has
+different meanings.
 
-```javascript title="Safely access nested optional properties"
-// Incorrect
-const statusWithoutOptionalChecks = response.data.Value.Status;
-
+```javascript title="Safely handle an optional Cityworks token"
 // Correct
-const statusWithOptionalChecks = response.data?.Value?.Status;
+async function getCityworksToken() {
+  const result = await axios.post(tokenUrl, data);
+
+  if (result?.data?.Value?.Token) {
+    tokenStore.setToken(result.data.Value.Token);
+    return;
+  }
+
+  throw new CustomError("failed to save token", "TOKEN_STORE_FAILED");
+}
 ```
 
-Use explicit `null` or `undefined` checks when the distinction matters, and do
-not use a fallback that hides an unexpected missing value.
+Optional chaining prevents `result`, `data`, or `Value` from causing an access
+error when they are missing. The `if` block handles a missing token as a
+meaningful failure. Do not return a fallback token or continue authentication
+after this check fails.
+
+```javascript title="Distinguish undefined and null API results"
+// Correct
+const vocabulary = await fetchData(
+  req.apiResponse,
+  getVocabById(id),
+  ErrorMessages.VOCAB.FETCH_ERROR,
+  true,
+);
+
+if (vocabulary === undefined) {
+  req.apiResponse.setStatus(StatusCodes.INTERNAL_SERVER_ERROR);
+} else if (vocabulary === null) {
+  throw new CustomError(ErrorMessages.VOCAB.NOT_FOUND, StatusCodes.NOT_FOUND);
+} else {
+  req.apiResponse.setStatus(StatusCodes.OK);
+}
+```
+
+Use explicit checks when `undefined` and `null` mean different things. In this
+API controller, `undefined` represents a fetch failure, while `null` represents
+a valid lookup with no vocabulary found.
 
 ## Code Reusability and Maintainability
 
@@ -463,37 +552,6 @@ it("returns the parcel with the requested ID", async () => {
 });
 ```
 
-## Repository Review and Team Confirmation
-
-### Summary of the review
-
-- `lco-integrations-and-automations`: reviewed the runtime modules
-  `app.js` and `gchat.js`, the Jest tests, and the package, ESLint, Prettier,
-  and EditorConfig configuration.
-- `api`: reviewed `app.js`, `server.js`, modules under `src/` (including
-  controllers, routes, services, repositories, middleware, utilities, and
-  configuration), Jest tests, and package and lint configuration.
-- Both repositories use CommonJS, Jest, two-space indentation, semicolons,
-  double-quoted strings, and async functions. The API also uses centralized
-  error handling and a Winston logger.
-
-### Conventions to confirm with the team
-
-- **Function declarations:** the integrations code and many API services use
-  declarations, while API controllers often use `const`-assigned arrow
-  functions. This guide recommends declarations for new standalone functions
-  and arrows for callbacks; confirm whether to standardize existing modules.
-- **Formatting and lint enforcement:** the integrations repository has an
-  explicit Prettier configuration and `format:check` script. The API has
-  formatter and linter scripts but different ESLint settings and no checked-in
-  Prettier configuration was found during this review. Confirm whether to align
-  these settings.
-- **Logging:** the API favors its Winston service, while the integrations
-  application has some intentional console output. Confirm the expected
-  approach for new command-line and application logging.
-- **File names:** the API contains kebab-case, camelCase, and PascalCase
-  filenames. Confirm a preferred naming convention for new files.
-
 ## API Integrations and HTTP Requests
 
 Both repositories use Axios for HTTP integrations, including Cityworks and GIS
@@ -516,39 +574,47 @@ For authenticated requests, use the authorization header or configured client
 pattern already used by the integration. Do not put credentials or tokens in
 URLs.
 
-## Security and Sensitive Data
-
-The repositories read credentials and tokens from environment variables, and
-their `.gitignore` files exclude local environment files. Keep secrets out of
-source code, committed environment files, error messages, and logs. Log
-non-sensitive context that helps diagnose a failure instead.
-
-```javascript title="Do not log credentials"
-// Incorrect
-logger.error("Authentication failed", { password, token });
-
-// Correct
-logger.error("Authentication failed", { service: "Cityworks" });
-```
-
 ## Configuration and Environment Variables
 
-Both repositories use `process.env`; the integrations repository also provides
-an `.env.example` and checks environment-variable coverage in its tests. Read
-configuration from the environment rather than embedding deployment-specific
-URLs or credentials. Validate required values before using them, and parse
-numeric values once at the configuration boundary.
+Both repositories use `process.env`; the integrations repository also checks
+environment-variable coverage in its tests. Read configuration from the
+environment and validate required values before creating clients.
 
-```javascript title="Validate required configuration"
+```javascript title="Validate a required Cityworks base URL"
 // Incorrect
-const baseURL = process.env.CITYWORKS_BASE_URL || "https://production.example";
+const baseUrl = process.env.CITYWORKS_BASE_URL || "https://production.example";
 
 // Correct
-const baseURL = process.env.CITYWORKS_BASE_URL;
-if (!baseURL) {
-  throw new Error("CITYWORKS_BASE_URL is not defined");
+const baseUrl = process.env.CITYWORKS_BASE_URL;
+if (!baseUrl) {
+  throw new CustomError(
+    "CITYWORKS_BASE_URL is not defined",
+    "CONFIGURATION_ERROR",
+  );
 }
+
+const axiosInstance = axios.create({
+  baseURL: baseUrl,
+});
 ```
+
+The incorrect example silently supplies a production URL. The correct example
+uses the repository's `CustomError` when `CITYWORKS_BASE_URL` is missing and
+passes the validated value to Axios as `baseURL`.
+
+Parse numeric environment values once when configuration is created:
+
+```javascript title="Parse the integrations email port"
+// Incorrect
+const emailPort = process.env.EMAIL_PORT;
+
+// Correct
+const emailPort = parseInt(process.env.EMAIL_PORT || "587", 10);
+```
+
+The integrations repository uses `"587"` when `EMAIL_PORT` is not set and
+parses the value as a base-10 integer. It does not add a separate range or
+integer validation in this configuration block.
 
 ## Testing and Test Automation
 
