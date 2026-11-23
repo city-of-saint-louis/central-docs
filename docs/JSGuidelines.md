@@ -235,22 +235,6 @@ The incorrect function parses the row, validates a field, and updates a case in
 one place. The correct version separates validation and parsing from the update,
 so each part is easier to read, test, and maintain.
 
-### Use one named-function style consistently within a module
-
-The integrations code and many API services use function declarations; API
-controllers also commonly use `const`-assigned arrow functions. For new
-standalone helpers, prefer named function declarations and use arrow functions
-for callbacks. When editing an existing module, follow its established pattern.
-
-```javascript title="Use arrow functions for callbacks"
-// Incorrect
-const parcelIdsWithFunctionCallback = parcels.map(function (parcel) {
-  return parcel.id;
-});
-
-// Correct
-const parcelIds = parcels.map((parcel) => parcel.id);
-```
 
 ## Formatting and Indentation
 
