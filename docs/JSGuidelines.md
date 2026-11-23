@@ -2,9 +2,7 @@
 
 ## Introduction
 
-This guide is based on the JavaScript in the City of St. Louis
-[`lco-integrations-and-automations`](https://github.com/city-of-saint-louis/lco-integrations-and-automations)
-and [`api`](https://github.com/city-of-saint-louis/api) repositories. It describes
+This guide is based on the JavaScript in the City of St. Louis. It describes
 common practices and recommends a consistent standard where the repositories
 differ. Follow the existing style when editing an established module; use the
 recommendations below for new code.
@@ -234,93 +232,6 @@ async function importLicenseRow(row) {
 The incorrect function parses the row, validates a field, and updates a case in
 one place. The correct version separates validation and parsing from the update,
 so each part is easier to read, test, and maintain.
-
-
-## Formatting and Indentation
-
-### Use two spaces, semicolons, and double quotes
-
-These are common in both repositories and are specified in the integrations
-repository's Prettier configuration. Keep statements readable and use the
-configured formatter where available.
-
-```javascript title="Format statements consistently"
-// Incorrect
-const unformattedParcel = {id: '12345'}
-
-// Correct
-const parcel = { id: "12345" };
-```
-
-### Break long expressions across lines
-
-Put each item on its own line when an object, argument list, or expression is
-long enough to be difficult to scan.
-
-```javascript title="Wrap long calls"
-// Incorrect
-async function loadParcelWithoutLineBreaks() {
-  const parcelResult = await getParcel(parcelId, includeAssessments, includeImages, includeNeighborhood);
-}
-
-// Correct
-async function loadParcelWithLineBreaks() {
-  const parcelResult = await getParcel(
-    parcelId,
-    includeAssessments,
-    includeImages,
-    includeNeighborhood,
-  );
-}
-```
-
-## Objects and Arrays
-
-### Use readable multiline objects and arrays
-
-Use a compact layout for short collections and one item per line for longer
-ones. Add a trailing comma in multiline collections.
-
-```javascript title="Lay out collections clearly"
-// Incorrect
-const longParcel = {
-parcelId: "12345", ward: 6, neighborhood: "Example", city: "St. Louis", state: "MO", postalCode: "63101"
-};
-const longParcelIds = ["12345", "67890", "54321", "09876", "11223", "44556", "77889"];
-
-// Correct
-const parcel = {
-  parcelId: "12345",
-  ward: 6,
-  neighborhood: "Example",
-  city: "St. Louis",
-  state: "MO",
-  postalCode: "63101",
-};
-
-const parcelIds = [
-  "12345",
-  "67890",
-  "54321",
-  "09876",
-  "11223",
-  "44556",
-  "77889",
-];
-```
-
-### Destructure values when it improves clarity
-
-Destructure commonly used properties rather than repeating long property paths.
-
-```javascript title="Destructure commonly used properties"
-// Incorrect
-const parcelIdFromParams = req.params.parcelId;
-const wardFromParams = req.params.ward;
-
-// Correct
-const { parcelId, ward } = req.params;
-```
 
 ## Conditional Statements and Loops
 
