@@ -11,19 +11,93 @@ recommendations below for new code.
 
 ## General JavaScript Guidelines
 
-### Prefer clear, direct code
+### Use descriptive names
 
-Use descriptive names and straightforward control flow. Avoid compressing
-multiple operations into a hard-to-read expression.
+Choose names that explain what a value or function represents. Clear names help
+readers understand code without guessing from surrounding context.
 
-```javascript title="Keep expressions easy to follow"
+```javascript title="Choose names that explain the purpose"
 // Incorrect
-const parcelFromLongCheck =
-  input && input.parcel && input.parcel.id ? input.parcel : null;
+const x = 1200;
+function f(value) {
+  return value * x;
+}
 
 // Correct
-const parcel = input?.parcel?.id ? input.parcel : null;
+const parcelArea = 1200;
+function calculateParcelValue(pricePerSquareFoot) {
+  return pricePerSquareFoot * parcelArea;
+}
 ```
+
+In the incorrect example, `x`, `f`, and `value` do not tell the reader what
+they represent. The correct names describe the area, the calculation, and its
+input.
+
+```javascript title="Name values after the data they contain"
+// Incorrect
+const data = await get(id);
+
+// Correct
+const parcel = await getParcelById(parcelId);
+```
+
+In the incorrect example, `data`, `get`, and `id` are too general. The correct
+example makes the kind of result and lookup clear.
+
+### Prefer clear, straightforward control flow
+
+Write conditions and branches so readers can follow each decision. Use early
+returns and separate checks instead of deeply nested or chained expressions.
+
+```javascript title="Use guard clauses instead of nested conditions"
+// Incorrect
+function getParcelOwner(parcel) {
+  if (parcel) {
+    if (parcel.owner) {
+      return parcel.owner;
+    } else {
+      return "Unknown";
+    }
+  } else {
+    return "Missing";
+  }
+}
+
+// Correct
+function getParcelOwner(parcel) {
+  if (!parcel) {
+    return "Missing";
+  }
+
+  if (!parcel.owner) {
+    return "Unknown";
+  }
+
+  return parcel.owner;
+}
+```
+
+The incorrect example nests checks, making the possible outcomes harder to
+scan. The correct example handles missing cases first, then returns the owner.
+
+```javascript title="Prefer explicit branches to chained ternaries"
+// Incorrect
+const status = !parcel ? "Missing" : parcel.active ? "Active" : "Inactive";
+
+// Correct
+let status;
+if (!parcel) {
+  status = "Missing";
+} else if (parcel.active) {
+  status = "Active";
+} else {
+  status = "Inactive";
+}
+```
+
+The chained ternary in the incorrect example hides multiple decisions in one
+line. The correct example gives each outcome its own readable branch.
 
 ### Use the project's configured tools
 
