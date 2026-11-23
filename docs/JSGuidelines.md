@@ -593,37 +593,6 @@ it("returns the parcel with the requested ID", async () => {
 });
 ```
 
-## Repository Review and Team Confirmation
-
-### Summary of the review
-
-- `lco-integrations-and-automations`: reviewed the runtime modules
-  `app.js` and `gchat.js`, the Jest tests, and the package, ESLint, Prettier,
-  and EditorConfig configuration.
-- `api`: reviewed `app.js`, `server.js`, modules under `src/` (including
-  controllers, routes, services, repositories, middleware, utilities, and
-  configuration), Jest tests, and package and lint configuration.
-- Both repositories use CommonJS, Jest, two-space indentation, semicolons,
-  double-quoted strings, and async functions. The API also uses centralized
-  error handling and a Winston logger.
-
-### Conventions to confirm with the team
-
-- **Function declarations:** the integrations code and many API services use
-  declarations, while API controllers often use `const`-assigned arrow
-  functions. This guide recommends declarations for new standalone functions
-  and arrows for callbacks; confirm whether to standardize existing modules.
-- **Formatting and lint enforcement:** the integrations repository has an
-  explicit Prettier configuration and `format:check` script. The API has
-  formatter and linter scripts but different ESLint settings and no checked-in
-  Prettier configuration was found during this review. Confirm whether to align
-  these settings.
-- **Logging:** the API favors its Winston service, while the integrations
-  application has some intentional console output. Confirm the expected
-  approach for new command-line and application logging.
-- **File names:** the API contains kebab-case, camelCase, and PascalCase
-  filenames. Confirm a preferred naming convention for new files.
-
 ## API Integrations and HTTP Requests
 
 Both repositories use Axios for HTTP integrations, including Cityworks and GIS
