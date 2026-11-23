@@ -168,23 +168,72 @@ ordinary local values.
 
 ## Functions and Methods
 
-### Use descriptive names and keep each function focused
+### Use descriptive names for functions
 
-Name functions for the action or result they represent. Extract repeated or
-distinct work into a helper rather than growing a function with unrelated
-responsibilities.
+Name a function for the action it performs. A specific name makes its purpose
+clear when it is called elsewhere in the code.
 
-```javascript title="Name a function for its purpose"
+```javascript title="Name a function for its action"
 // Incorrect
-function process(value) {
-  return value;
+function handle(row) {
+  return row.split(",");
 }
 
 // Correct
-function getParcelById(parcelId) {
-  return parcelRepository.findById(parcelId);
+function parseLicenseRow(csvRow) {
+  return csvRow.split(",");
 }
 ```
+
+`handle` does not explain what happens to the row. `parseLicenseRow` tells
+readers what the function does and what kind of input it expects.
+
+### Keep each function focused
+
+Give each function one clear responsibility. Small focused functions are easier
+to understand, test, and change without affecting unrelated work.
+
+```javascript title="Separate parsing, validation, and updating"
+// Incorrect
+async function importLicenseRow(row) {
+  const columns = row.split(",");
+  const caseNumber = columns[0].trim();
+  if (!caseNumber) {
+    throw new Error("Case number is required");
+  }
+  await updateCase(caseNumber, {
+    licenseType: columns[1].trim(),
+  });
+}
+
+// Correct
+function validateCaseNumber(value) {
+  const caseNumber = value.trim();
+  if (!caseNumber) {
+    throw new Error("Case number is required");
+  }
+  return caseNumber;
+}
+
+function parseLicenseRow(row) {
+  const columns = row.split(",");
+  return {
+    caseNumber: validateCaseNumber(columns[0]),
+    licenseType: columns[1].trim(),
+  };
+}
+
+async function importLicenseRow(row) {
+  const license = parseLicenseRow(row);
+  await updateCase(license.caseNumber, {
+    licenseType: license.licenseType,
+  });
+}
+```
+
+The incorrect function parses the row, validates a field, and updates a case in
+one place. The correct version separates validation and parsing from the update,
+so each part is easier to read, test, and maintain.
 
 ### Use one named-function style consistently within a module
 
