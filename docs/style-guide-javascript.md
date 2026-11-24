@@ -10,41 +10,9 @@ new code.
 
 ### Prefer straightforward control flow
 
-Write branches and decisions so they can be read one step at a time. Keep
-guard clauses and geometry or address decisions explicit instead of hiding
-multiple checks in deeply nested expressions.
-
-```javascript title="Use guard clauses for missing parcel IDs"
-// Incorrect
-function parseParcelId(parcelId) {
-  if (!parcelId) {
-    return null;
-  }
-  const filteredId = filterNonNumbers(parcelId);
-  if (isInvalidNumberString(filteredId)) {
-    return null;
-  } else {
-    return filteredId;
-  }
-}
-
-// Correct
-function parseParcelId(parcelId) {
-  if (!parcelId) {
-    return null;
-  }
-
-  const filteredId = filterNonNumbers(parcelId);
-  if (isInvalidNumberString(filteredId)) {
-    return null;
-  }
-
-  return filteredId;
-}
-```
-
-The `else` branch is not needed after the invalid-ID guard. Returning directly
-in the correct example keeps the success path shorter and easier to follow.
+Write logic that reads top to bottom. Handle invalid or exceptional cases early
+with guard clauses, and prefer explicit if/else branches over nested ternaries
+or deeply nested conditions.
 
 ```javascript title="Use an explicit branch for address unit lookup"
 // Incorrect
@@ -86,10 +54,9 @@ const { parcelId } = req.params;
 ```
 
 The `p` name does not explain that the value is a parcel ID. The destructured
-name in the correct example matches the API controller parameter and immediately
-identifies the data.
+name in the correct example immediately identifies the data.
 
-```javascript title="Name parcel and neighborhood helpers clearly"
+```javascript title="Name date values clearly"
 // Incorrect
 const d = dateValue instanceof Date ? dateValue : new Date(dateValue);
 
@@ -98,7 +65,7 @@ const date = dateValue instanceof Date ? dateValue : new Date(dateValue);
 ```
 
 The `d` name does not describe the Date value clearly. `date` makes the value
-easier to recognize in the same change-reporting code.
+easier to recognize
 
 ```javascript title="Name lookup accumulators clearly"
 // Incorrect
@@ -403,9 +370,9 @@ when an external response may omit an intermediate property. After safely
 reading the value, handle `undefined` or `null` explicitly when missing data has
 different meanings.
 
-```javascript title="Safely handle an optional Cityworks token"
+```javascript title="Safely handle an optional token"
 // Correct
-async function getCityworksToken() {
+async function getToken() {
   const result = await axios.post(tokenUrl, data);
 
   if (result?.data?.Value?.Token) {
@@ -422,27 +389,29 @@ error when they are missing. The `if` block handles a missing token as a
 meaningful failure. Do not return a fallback token or continue authentication
 after this check fails.
 
-```javascript title="Distinguish undefined and null API results"
-// Correct
-const vocabulary = await fetchData(
-  req.apiResponse,
-  getVocabById(id),
-  ErrorMessages.VOCAB.FETCH_ERROR,
-  true,
-);
+```javascript title="Distinguish undefined and null timeout values"
+const DEFAULT_TIMEOUT_MS = 5000;
 
-if (vocabulary === undefined) {
-  req.apiResponse.setStatus(StatusCodes.INTERNAL_SERVER_ERROR);
-} else if (vocabulary === null) {
-  throw new CustomError(ErrorMessages.VOCAB.NOT_FOUND, StatusCodes.NOT_FOUND);
-} else {
-  req.apiResponse.setStatus(StatusCodes.OK);
+// Incorrect
+function getTimeoutMs(options) {
+  return options.timeoutMs ?? DEFAULT_TIMEOUT_MS;
+}
+
+// Correct
+function getTimeoutMs(options) {
+  if (options.timeoutMs === undefined) {
+    return DEFAULT_TIMEOUT_MS;
+  }
+
+  if (options.timeoutMs === null) {
+    return Infinity;
+  }
+
+  return options.timeoutMs;
 }
 ```
 
-Use explicit checks when `undefined` and `null` mean different things. In this
-API controller, `undefined` represents a fetch failure, while `null` represents
-a valid lookup with no vocabulary found.
+Use explicit checks when `undefined` and `null` mean different things.
 
 ## Code Reusability and Maintainability
 
